@@ -1,23 +1,16 @@
 package com.GroupD.FurnishUp.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-@Entity(name = "CUSTOMER")
-@Table
-public class Users {
+@Entity(name = "CATEGORY")
+public class Category {
     @Id
+    @Column(name = "category_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(unique = true)
-    private String username;
-    private String email;
-    private String password;
-    private String role;
-
-
+    private String name;
 }
