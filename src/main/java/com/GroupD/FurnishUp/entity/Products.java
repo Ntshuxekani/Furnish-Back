@@ -10,15 +10,16 @@ import lombok.Setter;
 public class Products {
     @Id
     @Column(name="product_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-@NonNull
-  private String title;
-        @NonNull
-       private   int price;
-        @OneToOne(cascade = CascadeType.ALL)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @NonNull
+     private String title;
+       @NonNull
+       private   Long price;
+        //@OneToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "category_id", referencedColumnName = "category_id")
         @NonNull
-          private int d_price;
+          private Long d_price;
         @NonNull
     private String image;
         @NonNull
@@ -26,7 +27,7 @@ public class Products {
         @NonNull
     private String  description;
     @NonNull
-    private int quantity;
+    private Long quantity;
 @ManyToOne
 @JoinColumn(name="customer_id")
     private Users customer;

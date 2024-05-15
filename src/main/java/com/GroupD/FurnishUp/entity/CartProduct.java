@@ -9,8 +9,8 @@ import lombok.Setter;
 @Entity(name="CART_PRODUCT")
 public class CartProduct {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-   private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Long id;
     @ManyToOne
     @JoinColumn(name="cart_id")
     private Cart cart;
