@@ -16,7 +16,7 @@ public class CartProduct {
     private Cart cart;
 
     @ManyToOne
-    @JoinTable(name="product_id")
+    @JoinTable(name="id")
     private Products products;
 
 
