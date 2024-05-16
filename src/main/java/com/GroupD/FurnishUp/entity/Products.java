@@ -10,25 +10,33 @@ import lombok.Setter;
 public class Products {
     @Id
     @Column(name="product_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-@NonNull
-  private String title;
-        @NonNull
-       private   int price;
-        @OneToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "category_id", referencedColumnName = "category_id")
-        @NonNull
-          private int d_price;
-        @NonNull
+    @GeneratedValue(strategy = GenerationType.UUID)
+
+    @NonNull
+    private String title;
+
+    @NonNull
+    private   int price;
+
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    @NonNull
+    private int d_price;
+
+    @NonNull
     private String image;
-        @NonNull
+
+    @NonNull
     private String category;
-        @NonNull
+
+    @NonNull
     private String  description;
+
     @NonNull
     private int quantity;
-@ManyToOne
-@JoinColumn(name="customer_id")
+
+    @ManyToOne
+    @JoinColumn(name="customer_id")
     private Users customer;
 
 

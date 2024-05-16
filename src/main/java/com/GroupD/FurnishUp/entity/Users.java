@@ -3,6 +3,7 @@ package com.GroupD.FurnishUp.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 @Setter
@@ -11,12 +12,16 @@ import lombok.Setter;
 @Table
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(unique = true)
+    @NonNull
     private String username;
+    @NonNull
     private String email;
+    @NonNull
     private String password;
+    @NonNull
     private String role;
 
 
