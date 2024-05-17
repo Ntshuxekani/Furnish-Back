@@ -1,5 +1,6 @@
 package com.GroupD.FurnishUp.service;
 
+import com.GroupD.FurnishUp.entity.Products;
 import com.GroupD.FurnishUp.entity.Users;
 import com.GroupD.FurnishUp.repository.FurnishUpRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,4 +44,38 @@ public class FurnishUpServiceImpl implements FurnishUpService{
 
     @Override
     public void deleteUsers(Long id) {this.furnishUpRepo.deleteById(id);}
+
+
+
+    public List<Products> getAllProducts() {return furnishUpRepo.findAll();}
+
+
+    public void saveProducts(Products products) {
+        this.furnishUpRepo.save(products);
+    }
+
+    public Products getProductsById(Long id) {
+        Optional<Products> optional = furnishUpRepo.findById(id);
+        Products products;
+        if(optional.isPresent()) {
+            products = optional.get();
+        }else { throw new RuntimeException("Products for the" + id + "is not found");}
+        return products;
+    }
+
+
+    public void updateProducts(Long id, Products products) {
+        Products productFromDB = furnishUpRepo.findById(id).get();
+        productFromDB.setPrice(products.getPrice());
+        productFromDB.setDescription(products.getDescription());
+        productFromDB.setD_price(products.getD_price());
+        productFromDB.setTitle(products.getTitle());
+        productFromDB.setImage(products.getImage());
+        productFromDB.setCategory(products.getCategory());
+        productFromDB.setQuantity(products.getQuantity());
+        furnishUpRepo.save(productFromDB);
+    }
+
+
+    public void deleteProducts(Long id) {this.furnishUpRepo.deleteById(id);}
 }

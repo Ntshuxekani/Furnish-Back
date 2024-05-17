@@ -10,7 +10,8 @@ import lombok.Setter;
 public class Products {
     @Id
     @Column(name="product_id")
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @NonNull
     private String title;
