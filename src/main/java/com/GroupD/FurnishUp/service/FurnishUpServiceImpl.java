@@ -17,10 +17,11 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     @Override
     public List<Users> getAllUsers() {return furnishUpRepo.findAll();}
 
+    @Override
     public void saveUsers(Users users) {
         this.furnishUpRepo.save(users);
     }
-
+    @Override
     public Users getUsersById(Long id) {
         Optional<Users> optional = furnishUpRepo.findById(id);
         Users users;
