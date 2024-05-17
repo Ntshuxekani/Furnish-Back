@@ -15,4 +15,5 @@ public interface FurnishUpService {
     Users getUsersById(Long id);
 
     void deleteUsers(Long id);
+
 }

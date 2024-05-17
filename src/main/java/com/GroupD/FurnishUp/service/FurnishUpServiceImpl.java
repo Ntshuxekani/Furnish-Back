@@ -2,12 +2,15 @@ package com.GroupD.FurnishUp.service;
 
 import com.GroupD.FurnishUp.entity.Users;
 import com.GroupD.FurnishUp.repository.FurnishUpRepo;
+import jakarta.persistence.EntityNotFoundException;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Setter
 @Service
 public class FurnishUpServiceImpl implements FurnishUpService{
 
@@ -15,7 +18,8 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     private FurnishUpRepo furnishUpRepo;
 
     @Override
-    public List<Users> getAllUsers() {return furnishUpRepo.findAll();}
+    public List<Users> getAllUsers() {
+        return furnishUpRepo.findAll();}
 
     public void saveUsers(Users users) {
         this.furnishUpRepo.save(users);
@@ -30,6 +34,18 @@ public class FurnishUpServiceImpl implements FurnishUpService{
         return users;
     }
 
+//    @Override
+//    public void softDeleteUsers(Long id) {
+//        Optional<Users> usersOptional = furnishUpRepo.findById(id);
+//        if(usersOptional.isPresent()){
+//            Users users = usersOptional.get();
+//            users.setDeleted(true);
+//            furnishUpRepo.save(users);
+//        }else {
+//            throw new EntityNotFoundException("Not Found");
+//        }
+//    }
+
     @Override
     public void updateUsers(Long id, Users users) {
         Users userFromDB = furnishUpRepo.findById(id).get();
@@ -40,6 +56,6 @@ public class FurnishUpServiceImpl implements FurnishUpService{
         furnishUpRepo.save(userFromDB);
     }
 
-    @Override
-    public void deleteUsers(Long id) {this.furnishUpRepo.deleteById(id);}
+     @Override
+ public void deleteUsers(Long id) {this.furnishUpRepo.deleteById(id);}
 }
