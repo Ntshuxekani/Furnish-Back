@@ -1,6 +1,8 @@
 package com.GroupD.FurnishUp.controller;
 
+
 import com.GroupD.FurnishUp.entity.Products;
+
 import com.GroupD.FurnishUp.service.FurnishUpServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/FurnishUp2")
+@RequestMapping("api/v1/FurnishUp")
 public class ProductController {
 
     @Autowired

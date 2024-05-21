@@ -1,6 +1,5 @@
 package com.GroupD.FurnishUp.repository;
 
-import com.GroupD.FurnishUp.entity.Products;
 import com.GroupD.FurnishUp.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

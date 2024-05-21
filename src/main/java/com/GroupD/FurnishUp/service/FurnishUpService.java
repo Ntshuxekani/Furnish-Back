@@ -1,6 +1,5 @@
 package com.GroupD.FurnishUp.service;
 
-import com.GroupD.FurnishUp.FurnishUpApplication;
 import com.GroupD.FurnishUp.entity.Products;
 import com.GroupD.FurnishUp.entity.Users;
 
@@ -27,4 +26,5 @@ public interface FurnishUpService {
     Products getProductsById(Long id);
 
     void deleteProducts(Long id);
+
 }

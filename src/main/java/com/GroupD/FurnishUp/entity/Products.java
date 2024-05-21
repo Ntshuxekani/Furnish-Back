@@ -1,46 +1,35 @@
 package com.GroupD.FurnishUp.entity;
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.LongSummaryStatistics;
-import java.util.UUID;
+
 
 @Setter
 @Getter
-@Entity(name = "PRODUCTS")
+@Entity
 public class Products {
 
     @Id
-    @Column(name="product_id")
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String title;
+    private String productName;
+
+    private Long price;
+
+    private Long discountPrice;
 
 
-    private Double price;
-
-    //@OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "category_id", referencedColumnName = "category_id")
-
-    private int d_price;
+    private String description;
 
 
     private String image;
 
 
     private String category;
-
-
-    private String  description;
-
-
-    private int quantity;
-
-    @ManyToOne
-    @JoinColumn(name="customer_id")
-    private Users customer;
-
-
 }
