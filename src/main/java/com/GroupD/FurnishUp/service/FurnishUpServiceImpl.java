@@ -22,6 +22,7 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     @Override
     public List<Products> getAllProducts() {return productRepo.findAll();}
 
+    @Override
     public void saveProducts(Products products) {
         this.productRepo.save(products);
     }

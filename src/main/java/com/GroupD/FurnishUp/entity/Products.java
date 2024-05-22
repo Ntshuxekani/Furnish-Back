@@ -1,9 +1,6 @@
 package com.GroupD.FurnishUp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +9,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
+@Table
 public class Products {
 
     @Id
@@ -20,9 +18,9 @@ public class Products {
 
     private String productName;
 
-    private Long price;
+    private Double price;
 
-    private Long discountPrice;
+    private Double discountPrice;
 
 
     private String description;
