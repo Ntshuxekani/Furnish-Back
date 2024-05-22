@@ -2,18 +2,21 @@ package com.GroupD.FurnishUp.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
-import org.hibernate.annotations.SQLDelete;
+import jakarta.persistence.Table;
+import lombok.*;
+import org.hibernate.annotations.*;
 
-@Setter
-@Getter
+import java.util.Collection;
+import java.util.List;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "CUSTOMER")
-@Table
+@SQLDelete(sql = "UPDATE tbl_users SET deleted = true WHERE id=?")
+@Where(clause="deleted=false")
+@Table(name = "tbl_users")
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +28,17 @@ public class Users {
     private String email;
     @NonNull
     private String password;
-    @NonNull
-    private String role;
 
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    private boolean deleted = Boolean.FALSE; //FALSE =not deleted, TRUE = deleted
 
 }
+
+

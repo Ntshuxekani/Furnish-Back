@@ -8,4 +8,5 @@ import java.util.List;
 
 @Repository
 public interface FurnishUpRepo extends JpaRepository <Users, Long>{
+
 }

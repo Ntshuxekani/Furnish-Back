@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users_db")
+@RequestMapping("api/users")
 public class FurnishUpController {
 
     @Autowired
@@ -18,7 +18,10 @@ public class FurnishUpController {
     public List<Users> findAll() {return furnishUpService.getAllUsers();}
 
     @PostMapping
-    public void save(@RequestBody Users users) {furnishUpService.saveUsers(users);}
+    public void save(@RequestBody Users users) {
+        furnishUpService.saveUsers(users);
+
+    }
 
     @GetMapping("/{id}")
     public Users findOne(@PathVariable Long id) {
@@ -33,5 +36,6 @@ public class FurnishUpController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { //Path Variable annotation is used to specify id for the needed information
         this.furnishUpService.deleteUsers(id);
+
     }
 }

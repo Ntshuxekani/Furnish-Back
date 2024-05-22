@@ -52,7 +52,6 @@ public class FurnishUpServiceImpl implements FurnishUpService{
         userFromDB.setUsername(users.getUsername());
         userFromDB.setEmail(users.getEmail());
         userFromDB.setPassword(users.getPassword());
-        userFromDB.setRole(users.getRole());
         furnishUpRepo.save(userFromDB);
     }
 
