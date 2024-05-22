@@ -1,6 +1,7 @@
 package com.GroupD.FurnishUp.service;
 
 import com.GroupD.FurnishUp.FurnishUpApplication;
+import com.GroupD.FurnishUp.entity.Products;
 import com.GroupD.FurnishUp.entity.Users;
 
 import java.util.List;
@@ -15,4 +16,14 @@ public interface FurnishUpService {
     Users getUsersById(Long id);
 
     void deleteUsers(Long id);
+
+    List<Products> getAllProducts();
+
+    void saveProducts(Products products);
+
+    Products getProductsById(Long id);
+
+    void updateProducts(Long id, Products products);
+
+    void deleteProducts(Long id);
 }

@@ -10,7 +10,7 @@ import lombok.Setter;
 public class CartProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   private int id;
+    private int id;
     @ManyToOne
     @JoinColumn(name="cart_id")
     private Cart cart;
@@ -20,11 +20,10 @@ public class CartProduct {
     private Products products;
 
 
-    public CartProduct() {
-        products = null;
+    public CartProduct() {products = null;
     }
     public CartProduct(Cart cart, Products products) {
         this.cart=cart;
-        this.products = products;
+        //this.products = products;
     }
 }

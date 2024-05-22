@@ -3,6 +3,7 @@ package com.GroupD.FurnishUp.service;
 import com.GroupD.FurnishUp.entity.Products;
 import com.GroupD.FurnishUp.entity.Users;
 import com.GroupD.FurnishUp.repository.FurnishUpRepo;
+import com.GroupD.FurnishUp.repository.ProdRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     @Autowired
     private FurnishUpRepo furnishUpRepo;
 
+    @Autowired
+    private ProdRepo prodRepo;
+
     @Override
     public List<Users> getAllUsers() {return furnishUpRepo.findAll();}
 
@@ -22,6 +26,7 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     public void saveUsers(Users users) {
         this.furnishUpRepo.save(users);
     }
+
     @Override
     public Users getUsersById(Long id) {
         Optional<Users> optional = furnishUpRepo.findById(id);
@@ -47,15 +52,18 @@ public class FurnishUpServiceImpl implements FurnishUpService{
 
 
 
-    public List<Products> getAllProducts() {return furnishUpRepo.findAll();}
+    @Override
+    public List<Products> getAllProducts() {return prodRepo.findAll();}
 
 
+    @Override
     public void saveProducts(Products products) {
-        this.furnishUpRepo.save(products);
+        this.prodRepo.save(products);
     }
 
+    @Override
     public Products getProductsById(Long id) {
-        Optional<Products> optional = furnishUpRepo.findById(id);
+        Optional<Products> optional = prodRepo.findById(id);
         Products products;
         if(optional.isPresent()) {
             products = optional.get();
@@ -64,8 +72,9 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     }
 
 
+    @Override
     public void updateProducts(Long id, Products products) {
-        Products productFromDB = furnishUpRepo.findById(id).get();
+        Products productFromDB = prodRepo.findById(id).get();
         productFromDB.setPrice(products.getPrice());
         productFromDB.setDescription(products.getDescription());
         productFromDB.setD_price(products.getD_price());
@@ -73,9 +82,10 @@ public class FurnishUpServiceImpl implements FurnishUpService{
         productFromDB.setImage(products.getImage());
         productFromDB.setCategory(products.getCategory());
         productFromDB.setQuantity(products.getQuantity());
-        furnishUpRepo.save(productFromDB);
+        prodRepo.save(productFromDB);
     }
 
 
-    public void deleteProducts(Long id) {this.furnishUpRepo.deleteById(id);}
+    @Override
+    public void deleteProducts(Long id) {this.prodRepo.deleteById(id);}
 }
