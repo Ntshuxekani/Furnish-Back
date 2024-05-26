@@ -1,7 +1,9 @@
 package com.GroupD.FurnishUp.service;
 
+import com.GroupD.FurnishUp.entity.CartOrders;
 import com.GroupD.FurnishUp.entity.Products;
 import com.GroupD.FurnishUp.entity.Users;
+import com.GroupD.FurnishUp.repository.CardOrderRepo;
 import com.GroupD.FurnishUp.repository.FurnishUpRepo;
 import com.GroupD.FurnishUp.repository.ProdRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class FurnishUpServiceImpl implements FurnishUpService{
 
     @Autowired
     private ProdRepo prodRepo;
+
+    @Autowired
+    private CardOrderRepo cardOrderRepo;
 
     @Override
     public List<Users> getAllUsers() {return furnishUpRepo.findAll();}
@@ -88,4 +93,35 @@ public class FurnishUpServiceImpl implements FurnishUpService{
 
     @Override
     public void deleteProducts(Long id) {this.prodRepo.deleteById(id);}
+
+
+    @Override
+    public List<CartOrders> getAllCartOrders() {return cardOrderRepo.findAll();}
+
+    @Override
+    public void saveCartOrders(CartOrders cartOrders) {
+        this.cardOrderRepo.save(cartOrders);
+    }
+
+    @Override
+    public CartOrders getCartOrdersById(Long id) {
+        Optional<CartOrders> optional = cardOrderRepo.findById(id);
+        CartOrders cartOrders;
+        if(optional.isPresent()) {
+            cartOrders = optional.get();
+        }else { throw new RuntimeException("CartOrders for the" + id + "is not found");}
+        return cartOrders;
+    }
+
+    @Override
+    public void updateCartOrders(Long id, CartOrders cartOrders) {
+        CartOrders cartOrderFromDB = cardOrderRepo.findById(id).get();
+        cartOrderFromDB.setPrice(cartOrders.getPrice());
+        cartOrderFromDB.setQuantity(cartOrders.getQuantity());
+        cartOrderFromDB.setProduct_id(cartOrders.getProduct_id());
+        cardOrderRepo.save(cartOrderFromDB);
+    }
+
+    @Override
+    public void deleteCartOrders(Long id) {this.cardOrderRepo.deleteById(id);}
 }

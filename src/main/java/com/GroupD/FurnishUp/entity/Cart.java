@@ -15,4 +15,8 @@ public class Cart {
     @JoinColumn(name="customer_id")
     private Users customer;
     public Cart(){}
+
+    private Long quantity;
+
+    private Long price;
 }
