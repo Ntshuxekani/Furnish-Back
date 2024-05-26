@@ -95,33 +95,24 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     public void deleteProducts(Long id) {this.prodRepo.deleteById(id);}
 
 
-    @Override
-    public List<CartOrders> getAllCartOrders() {return cardOrderRepo.findAll();}
+    @Service
+    private List<CartItem> cartItems = new ArrayList<>();
 
     @Override
-    public void saveCartOrders(CartOrders cartOrders) {
-        this.cardOrderRepo.save(cartOrders);
+    public void addToCart(String productId, int quantity) {
+        // Add logic to add items to the cart
+        // This can include checking if the item already exists in the cart
+        // If it exists, update the quantity, otherwise add a new item to the cart
     }
 
     @Override
-    public CartOrders getCartOrdersById(Long id) {
-        Optional<CartOrders> optional = cardOrderRepo.findById(id);
-        CartOrders cartOrders;
-        if(optional.isPresent()) {
-            cartOrders = optional.get();
-        }else { throw new RuntimeException("CartOrders for the" + id + "is not found");}
-        return cartOrders;
+    public void removeFromCart(String productId) {
+        // Add logic to remove items from the cart based on productId
     }
 
     @Override
-    public void updateCartOrders(Long id, CartOrders cartOrders) {
-        CartOrders cartOrderFromDB = cardOrderRepo.findById(id).get();
-        cartOrderFromDB.setPrice(cartOrders.getPrice());
-        cartOrderFromDB.setQuantity(cartOrders.getQuantity());
-        cartOrderFromDB.setProduct_id(cartOrders.getProduct_id());
-        cardOrderRepo.save(cartOrderFromDB);
+    public List<CartItem> getCartItems() {
+        // Return the list of cart items
+        return cartItems;
     }
-
-    @Override
-    public void deleteCartOrders(Long id) {this.cardOrderRepo.deleteById(id);}
 }

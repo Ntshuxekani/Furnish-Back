@@ -54,4 +54,23 @@ public class CartOrders {
     public void setId(Long id) {
         this.id = id;
     }
+
+
+    private String productId;
+    private String productName;;
+
+    // AddToCartRequest.java
+    public class AddToCartRequest {
+        private String productId;
+        private int quantity;
+
+        // getters and setters
+    }
+
+    // RemoveFromCartRequest.java
+    public class RemoveFromCartRequest {
+        private String productId;
+
+        // getters and setters
+    }
 }

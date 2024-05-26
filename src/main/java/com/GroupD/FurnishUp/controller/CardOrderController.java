@@ -12,26 +12,20 @@ import java.util.List;
 @RequestMapping("/api/v1/FurnishUp/CartOrders")
 public class CardOrderController {
     @Autowired
-    private FurnishUpServiceImpl furnishUpService;
+    private CartService cartService;
 
-    @GetMapping
-    public List<CartOrders> findAll() {return furnishUpService.getAllCartOrders();}
-
-    @PostMapping
-    public void save(@RequestBody CartOrders cartOrders) {furnishUpService.saveCartOrders(cartOrders);}
-
-    @GetMapping("/{id}")
-    public CartOrders findOne(@PathVariable Long id) {
-        return furnishUpService.getCartOrdersById(id);
+    @PostMapping("/addToCart")
+    public void addToCart(@RequestBody CartOrders.AddToCartRequest request) {
+        cartService.addToCart(request.getProductId(), request.getQuantity());
     }
 
-    @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody CartOrders cartOrders) {
-        this.furnishUpService.updateCartOrders(id, cartOrders);
+    @PostMapping("/removeFromCart")
+    public void removeFromCart(@RequestBody CartOrders.RemoveFromCartRequest request) {
+        cartService.removeFromCart(request.getProductId());
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) { //Path Variable annotation is used to specify id for the needed information
-        this.furnishUpService.deleteCartOrders(id);
+    @GetMapping("/cartItems")
+    public List<CartItem> getCartItems() {
+        return cartService.getCartItems();
     }
 }

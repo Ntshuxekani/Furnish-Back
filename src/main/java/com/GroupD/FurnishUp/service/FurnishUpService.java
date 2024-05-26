@@ -38,4 +38,10 @@ public interface FurnishUpService {
     CartOrders getCartOrdersById(Long id);
 
     void deleteCartOrders(Long id);
+
+
+
+    void addToCart(String productId, int quantity);
+    void removeFromCart(String productId);
+    List<CartItem> getCartItems();
 }
