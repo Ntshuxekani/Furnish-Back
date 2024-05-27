@@ -2,7 +2,6 @@ package com.GroupD.FurnishUp.service;
 
 import com.GroupD.FurnishUp.entity.Users;
 import com.GroupD.FurnishUp.repository.FurnishUpRepo;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +20,9 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     public List<Users> getAllUsers() {
         return furnishUpRepo.findAll();}
 
-    public void saveUsers(Users users) {
+    public Users saveUsers(Users users) {
         this.furnishUpRepo.save(users);
+        return users;
     }
 
     public Users getUsersById(Long id) {
@@ -47,14 +47,17 @@ public class FurnishUpServiceImpl implements FurnishUpService{
 //    }
 
     @Override
-    public void updateUsers(Long id, Users users) {
+    public Users updateUsers(Long id, Users users) {
         Users userFromDB = furnishUpRepo.findById(id).get();
         userFromDB.setUsername(users.getUsername());
         userFromDB.setEmail(users.getEmail());
         userFromDB.setPassword(users.getPassword());
         furnishUpRepo.save(userFromDB);
+        return userFromDB;
     }
 
      @Override
- public void deleteUsers(Long id) {this.furnishUpRepo.deleteById(id);}
+ public Users deleteUsers(Long id) {furnishUpRepo.deleteById(id);
+         return null;
+     }
 }

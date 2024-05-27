@@ -10,6 +10,8 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
+@Setter
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,6 +34,7 @@ public class Users {
     public boolean isDeleted() {
         return deleted;
     }
+
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
