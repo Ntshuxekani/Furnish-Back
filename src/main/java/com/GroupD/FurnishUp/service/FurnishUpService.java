@@ -29,19 +29,19 @@ public interface FurnishUpService {
     void deleteProducts(Long id);
 
 
-    List<CartOrders> getAllCartOrders();
+    //List<CartOrders> getAllCartOrders();
 
-    void saveCartOrders(CartOrders cartOrders);
+    //void saveCartOrders(CartOrders cartOrders);
 
-    void updateCartOrders(Long id, CartOrders cartOrders);
+    //void updateCartOrders(Long id, CartOrders cartOrders);
 
-    CartOrders getCartOrdersById(Long id);
+    //CartOrders getCartOrdersById(Long id);
 
-    void deleteCartOrders(Long id);
+    //void deleteCartOrders(Long id);
 
 
 
-    void addToCart(String productId, int quantity);
-    void removeFromCart(String productId);
-    List<CartItem> getCartItems();
+    void addToCart(Long product_id, Long quantity);
+    void removeFromCart(Long product_id);
+    List<CartOrders> getCartOrders();
 }

@@ -9,6 +9,7 @@ import com.GroupD.FurnishUp.repository.ProdRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,24 +96,24 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     public void deleteProducts(Long id) {this.prodRepo.deleteById(id);}
 
 
-    @Service
-    private List<CartItem> cartItems = new ArrayList<>();
+
+    private List<CartOrders> cartOrders = new ArrayList<>();
 
     @Override
-    public void addToCart(String productId, int quantity) {
+    public void addToCart(Long product_id, Long quantity) {
         // Add logic to add items to the cart
         // This can include checking if the item already exists in the cart
         // If it exists, update the quantity, otherwise add a new item to the cart
     }
 
     @Override
-    public void removeFromCart(String productId) {
+    public void removeFromCart(Long product_id) {
         // Add logic to remove items from the cart based on productId
     }
 
     @Override
-    public List<CartItem> getCartItems() {
-        // Return the list of cart items
-        return cartItems;
+    public List<CartOrders> getCartOrders() {
+        // Return the list of cart orders
+        return cartOrders;
     }
 }
