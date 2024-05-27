@@ -44,18 +44,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 //  public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 //    authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 //  }
-@Bean
-public WebMvcConfigurer corsConfigurer() {
-    return new WebMvcConfigurer() {
-        @Override
-        public void addCorsMappings(CorsRegistry registry) {
-            registry.addMapping("/api/**")
-                    .allowedOrigins("localhost:4200")
-                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                   .allowCredentials(true);
-        }
-    };
-}
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
