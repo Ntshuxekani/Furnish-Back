@@ -10,4 +10,6 @@ public class JwtappApplication {
 		SpringApplication.run(JwtappApplication.class, args);
 	}
 
+
+
 }
