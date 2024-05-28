@@ -24,18 +24,13 @@ public class FurnishUpController {
     public ResponseEntity<Users> save(@RequestBody Users users) {
        Users savedUser = furnishUpService.saveUsers(users);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
-
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Users> findOne(@PathVariable Long id) {
-        furnishUpService.getUsersById(id).setDeleted(true);
-        if (furnishUpService.getUsersById(id).isDeleted()){
-            return new  ResponseEntity<>(furnishUpService.getUsersById(id), HttpStatus.NOT_FOUND);
-        }else {
-            return new ResponseEntity<>(furnishUpService.getUsersById(id), HttpStatus.FOUND);
-        }
 
+
+            return  ResponseEntity.ok(furnishUpService.getUsersById(id));
 
     }
 

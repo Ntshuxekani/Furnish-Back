@@ -1,9 +1,11 @@
 package com.GroupD.FurnishUp.service;
 
 import com.GroupD.FurnishUp.entity.Users;
+import com.GroupD.FurnishUp.exceptions.AppException;
 import com.GroupD.FurnishUp.repository.FurnishUpRepo;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +32,7 @@ public class FurnishUpServiceImpl implements FurnishUpService{
         Users users;
         if(optional.isPresent()) {
             users = optional.get();
-        }else { throw new RuntimeException("Users for the" + id + "is not found");}
+        }else { throw new AppException("User not Found", HttpStatus.NOT_FOUND);}
         return users;
     }
 
