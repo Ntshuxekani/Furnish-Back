@@ -23,11 +23,15 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(unique = true)
+
     @NonNull
     private String username;
+
     @NonNull
     private String email;
+
     @NonNull
     private String password;
 
