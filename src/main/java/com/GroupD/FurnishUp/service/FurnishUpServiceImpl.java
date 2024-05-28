@@ -100,15 +100,21 @@ public class FurnishUpServiceImpl implements FurnishUpService{
     private List<CartOrders> cartOrders = new ArrayList<>();
 
     @Override
-    public void addToCart(Long product_id, Long quantity) {
+    public void addToCart(Long id, Long quantity) {
         // Add logic to add items to the cart
         // This can include checking if the item already exists in the cart
         // If it exists, update the quantity, otherwise add a new item to the cart
+        CartOrders cartOrderFormDB = cardOrderRepo.findById(id).get();
+        cartOrderFormDB.setPrice(cartOrders.get());
+        cartOrderFormDB.setProduct_id(cartOrders.getProduct_id());
+        cartOrderFormDB.setQuantity(cartOrders.getQuantity());
+        cardOrderRepo.save(cartOrderFormDB);
     }
 
     @Override
     public void removeFromCart(Long product_id) {
         // Add logic to remove items from the cart based on productId
+        this.cardOrderRepo.deleteById(product_id);
     }
 
     @Override

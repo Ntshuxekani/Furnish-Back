@@ -31,7 +31,7 @@ public interface FurnishUpService {
 
     //List<CartOrders> getAllCartOrders();
 
-    //void saveCartOrders(CartOrders cartOrders);
+    void saveCartOrders(CartOrders cartOrders);
 
     //void updateCartOrders(Long id, CartOrders cartOrders);
 
