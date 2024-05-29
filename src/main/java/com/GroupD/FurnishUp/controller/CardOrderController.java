@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/FurnishUp/CartOrders")
+@RequestMapping("/api/FurnishUp/CartOrders")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CardOrderController {
     @Autowired
     private FurnishUpServiceImpl furnishUpService;
