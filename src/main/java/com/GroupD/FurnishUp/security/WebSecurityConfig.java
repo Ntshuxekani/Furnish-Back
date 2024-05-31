@@ -56,18 +56,18 @@ public class WebSecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    @Bean
+      @Bean
     public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
-                        .allowedOrigins("localhost:4200")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowCredentials(true);
-            }
-        };
-    }
+         return new WebMvcConfigurer() {
+             @Override
+             public void addCorsMappings(CorsRegistry registry) {
+                 registry.addMapping("/api/**")
+                         .allowedOrigins("localhost:4200")
+                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                         .allowCredentials(true);
+             }
+         };
+     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
